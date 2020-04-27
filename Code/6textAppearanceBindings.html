@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Data binding Example</title>
+    <link rel="stylesheet" type="text/css" href="ko.css">
+    <script type="text/javascript" src="knockout-3.4.2.js"></script>
+    <style>
+            .outOfStock {
+               color: green;
+               font-weight: bold;
+            }
+         </style>
+</head>
+
+<body>
+
+    1. Text Binding : <span data-bind="text: message"> </span> <br> <br>
+    
+
+    2. HTMl Binding : <span data-bind="html: details"></span> <br><br>
+
+    3. <span data-bind="style: { color: 'red'}"> Style Binding</span> <br><br>
+
+    4. Attribute Binding  : <a data-bind="attr: { href: url, title: attrDetails, target : '_blank' }">
+        Knockout Attribute Binding    </a><br><br>
+
+    5. CSS Binding :  <span data-bind = "css: { outOfStock : productStock() === 0 }"> Product Details. </span><br><br>
+
+    6.  Visible Binding :<div data-bind="visible: shouldShowMessage">
+            You will see this message only when "shouldShowMessage" holds a true value.
+        </div> <br>
+
+
+    <script>
+        var viewModel = {
+            message: ko.observable('Welcome'),            
+            details: ko.observable("<b>Knockout HTML binding<b>"),
+            url: ko.observable("https://www.tutorialspoint.com/knockoutjs/"),
+            attrDetails: ko.observable("Learning KO Binding"),
+            productStock : ko.observable(0),
+            shouldShowMessage: ko.observable(true)
+        }
+
+        // viewModel.shouldShowMessage(false); 
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+
+</html>

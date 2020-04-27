@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Data binding Example</title>
+    <link rel="stylesheet" type="text/css" href="ko.css">
+    <script type="text/javascript" src="knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <!-- Data bind and Binding context: Properties in Knockout and way to access -->
+
+    <div data-bind="text: message" class="div1"> </div>
+
+    <div data-bind='text: employee' class="div1"> </div>
+
+    <div data-bind='with : employee' class="div1">
+        First Name : <span data-bind="text: fname"> </span><br>
+        Last Name : <span data-bind="text: lname"> </span><br>
+        Role : <span data-bind="text: role"> </span><br>
+    </div>    
+    <!-- First Name : <span data-bind="text: fname"> </span><br> -->
+    <script>
+        var viewModel = {
+            message: ko.observable('Welcome'),
+            employee: ko.observable({
+                fname: "Surekha",
+                lname: "Gadkari",
+                role: " Developer"
+            })
+        }
+        ko.applyBindings(viewModel);
+
+        // console.log(viewModel);
+        // console.log(viewModel.message);
+        // console.log(viewModel.message());
+        
+        // viewModel.message("New value");
+        // console.log(viewModel.message());
+        
+    </script>
+</body>
+
+</html>

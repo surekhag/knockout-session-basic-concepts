@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="ko.css">
+    <script type="text/javascript" src="knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <h1> If Binding </h1>
+
+    <div class="div1">
+        <ul data-bind="foreach: planets">
+            <li>
+                Planet: <b data-bind="text: name"> </b>
+                <div data-bind="if: capital">
+                    Capital: <b data-bind="text: capital.cityName"> </b>
+                </div>
+                <!-- ko ifnot: capital -->                
+                    Capital: <b> Unavailable </b>                
+                <!-- /ko-->
+            </li><br>
+        </ul>
+    </div>
+
+
+    <script>
+        ko.applyBindings({
+            planets: [
+                { name: 'Mercury', capital: null },
+                { name: 'Earth', capital: { cityName: 'Barnsley' } },
+                { name: 'TestPlanet', capital: { cityName: 'TestCity' } }
+            ]
+        });
+    </script>
+</body>
+
+</html>

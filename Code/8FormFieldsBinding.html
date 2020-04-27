@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+   <title>KnockoutJS Templating - Named Template</title>
+   <script type="text/javascript" src="knockout-3.4.2.js"></script>
+</head>
+
+<body>
+   <h1> Form Fields Binding </h1>
+   <div>
+      1. Click Binding : You've clicked <span data-bind="text: numberOfClicks"></span> times
+      <button data-bind="click: incrementClickCounter">Click me</button>
+   </div>
+   <p>2. Checked Binding : Send me spam : <input type="checkbox" data-bind="checked: wantsSpam" /></p>
+
+   <p>3. Options/selectedOptions Binding :
+      Destination country
+      <select data-bind="options: availableCountries, selectedOptions: chosenCountries"></select>
+   </p>
+
+   <p>4. Value Binding : Enter your name: <input data-bind="value: yourName" /></p>
+
+   <p>
+      5. Checked and Enable Binding: <input type='checkbox' data-bind="checked: hasCellphone,  enable: hasCellphone" />
+      I have a cellphone
+   </p>
+
+   <script type="text/javascript">
+      var viewModel = {
+         numberOfClicks: ko.observable(0),
+         incrementClickCounter: function () {
+            var previousCount = this.numberOfClicks();
+            this.numberOfClicks(previousCount + 1);
+         },
+
+         wantsSpam: ko.observable(true), // Initially checked
+
+         availableCountries: ko.observableArray(['France', 'Germany', 'Spain']),
+         chosenCountries: ko.observableArray(['Germany']),
+
+         yourName: ko.observable("Surekha Gadkari"),
+
+         hasCellphone: ko.observable(false),
+         cellphoneNumber: ""
+      };
+
+      ko.applyBindings(viewModel);
+   </script>
+
+</body>
+
+</html>
